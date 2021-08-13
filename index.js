@@ -31,9 +31,24 @@ app.post('/order',(req,res) => {
         receipt: "order_rcptid_11"
       };
 
-      razorpay.orders.create(options,(err,order) => {
+      razorpay.orders.create(options,function (err,order) {
           console.log(order)
+          res.json(order)
       })
+})
+
+app.post('/is-order-complete',(req,res)=>{
+
+    razorpay.payments.fetch(req.body.razorpay_payment_id).then((paymentDoc) => {
+        if(paymentDoc.status=='captured'){
+            res.send('Your payment is successful')
+        }
+        else{
+            res.redirect('/')
+        }
+
+    })
+
 })
 
 app.listen(5000)
