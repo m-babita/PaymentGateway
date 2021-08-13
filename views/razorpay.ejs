@@ -13,24 +13,44 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
-  <body>
-
-		<section class="hero is-link is-fullheight">
+  <body class="has-navbar-fixed-top">
+        <nav class="navbar is-fixed-top navbar is-dark">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="#" class="navbar-item" style="font-weight: bold;">
+                    Help Pets    
+                    </a>
+                    <span class="navbar-burger burger" data-target="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navMenu" class="navbar-menu" id="navMenu">
+                    <div class="navbar-end">
+                        <a href="#" class="navbar-item is-active">Home</a>
+                        <a href="#About" class="navbar-item">About</a>
+                        <a href="#Contact" class="navbar-item">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+		<section id="Home" class="hero is-warning is-fullheight">
 			<div class="hero-body is-centered">
 				<div class="container">
 					<div class="columns is-centered is-vcentered">
 						
 						<div class="column is-6">
-							<p class="title is-size-1">Just a book</p>
-							<p class="subtitle is-size-4">You can now read this book just for ₹500</p>
-
+							<p class="title is-size-1">Giving the gift of compassion</p>
+							<p class="subtitle is-size-4">Help by donating today! All donations go directly to helping the animals</p>
+                            
 							<button id= "rzp-button1" class="button is-link is-light is-medium">Donate Now</button>
 						</div>
 					
 						<div class="column is-5">
 							<figure class="image">
 								
-								<img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" 
+								<img src="https://mcvt-comet-37.fra1.cdn.digitaloceanspaces.com//previews/47443/preview_47443.jpg" 
 								style="border-radius: 10px" alt="">
 
 							</figure>
@@ -40,8 +60,65 @@
 				</div>
 			</div>
 	</section>
+    <section id="About" class="hero is-fullheight">
+        <div class="hero-body is-centered">
+            <div class="columns is-centered is-vcentered">
+                <div class="column is-6">
+          <p class="title" style="text-align: center;">
+            About Us
+          </p>
+        </div>
+     
+        <div class="column is-5">
+        <p class="subtitle">
+            Help Animals India is a online based, non-profit charity organization dedicated to supporting efficient and <br> 
+            effective animal protection organizations in India and Nepal.<br>
+            We strive to put our donor's generous contributions to work where they are needed the most.
+            <br><br>
+            Help Animals India develops close relationships with India's animal welfare NGOs (non-government organizations).<br>
+            This ensures that all donations made to save India's animals are transparent and do the most good. <br>
+            In short, we provide donors confidence that their donations are put to the best use.
+          </p>
+        </div>
+    </div>
+        </div>
+      </section>
+      
+      <section id="Contact" class="hero is-halfheight is-warning">
+        <div class="hero-body is-centered">
+            <div class="columns is-centered is-vcentered">
+            <div class="column is-6">
+          <p class="title" style="text-align: center;">
+            Contact Us
+          </p>
+          </div>
+          <div class="column is-5">
+          <p class="subtitle">
+            IMPORTANT! Located in Madhya Pradesh, Help Animals India is a grant-giving agency and not an animal shelter.<br>
+            <br> 
+            You can find another list here and a list of all the PFAs (People for Animas) in the country here.<br>
+            If in India and want to connect with other volunteers in your area please visit the Animal Volunteers of India.
+            <div class="block" >
+                <strong>Mail us at
+              <a href="mailto:help.pets@donation.in" style="text-decoration: underline;">help.pets@donation.in</a></strong>.
+            </div>
+          </p>
+        </div>
+            </div>
+    </div>
+      </section>
 
     <script>
+            
+        (function(){
+            var burger = document.querySelector('.burger');
+            var nav = document.querySelector('#'+burger.dataset.target);
+
+            burger.addEventListener('click',function(){
+                burger.classList.toggle('is-active');
+                nav.classList.toggle('is-active');
+            })
+        })();
 
         axios.post('/order').then((info)=>{
             console.log(info)
@@ -49,9 +126,9 @@
 			var options = {
     "key": 'rzp_test_aOwE6JvNP9xbw3', // Enter the Key ID generated from the Dashboard
     "amount": "50000",
-	"name": "Acme Corp",
+	"name": "Help Pets",
     "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
+    "image": "https://image.flaticon.com/icons/png/512/2960/2960153.png",
     "order_id": info.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
     // "prefill": {
@@ -63,7 +140,7 @@
     //     "address": "Razorpay Corporate Office"
     // },
     "theme": {
-        "color": "#3399cc"
+        "color": "#FDAFB5"
     }
 };
 
