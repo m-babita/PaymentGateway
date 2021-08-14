@@ -1,7 +1,11 @@
 const express = require('express')
 const Razorpay = require('razorpay')
 
+
 let app = express()
+
+//routes
+app.use('/',require('./routes/getdetails'));
 
 //in order to setup api key
 const razorpay = new Razorpay({
